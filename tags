@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Memory	run_app.py	/^class Memory:$/;"	c
+ProgramSettings	run_app.py	/^class ProgramSettings:$/;"	c
+__init__	run_app.py	/^    def __init__(self):$/;"	m	class:Memory
+__init__	run_app.py	/^    def __init__(self):$/;"	m	class:ProgramSettings
+add_tag	run_app.py	/^    def add_tag(self, tag):$/;"	m	class:Memory
+author	setup.py	/^    author='valgrut',$/;"	v
+author_email	setup.py	/^    author_email='xpeskajiri@gmail.com',$/;"	v
+config	run_app.py	/^    config = {$/;"	v
+convert_json_to_memory	run_app.py	/^def convert_json_to_memory(json_memory):$/;"	f
+convert_memory_to_json	run_app.py	/^def convert_memory_to_json(memory_obj):$/;"	f
+description	setup.py	/^    description='Manage your memories.'$/;"	v
+format_as_dictionary	run_app.py	/^    def format_as_dictionary(self):$/;"	m	class:Memory
+insert_memory_to_db	run_app.py	/^def insert_memory_to_db(memory_obj):$/;"	f
+json_memory	run_app.py	/^        json_memory = convert_memory_to_json(memory1.format_as_dictionary())$/;"	v
+license	setup.py	/^    license='GPL v3',$/;"	v
+memories_db	run_app.py	/^        memories_db = mysql.connector.connect(**config)$/;"	v
+memories_db	run_app.py	/^    memories_db = ""$/;"	v
+memory1	run_app.py	/^        memory1 = Memory()$/;"	v
+name	setup.py	/^    name='MemoriesArchive',$/;"	v
+packages	setup.py	/^    packages=['ujson'],$/;"	v
+parse_args	run_app.py	/^def parse_args():$/;"	f
+set_description	run_app.py	/^    def set_description(self, description):$/;"	m	class:Memory
+set_end_date	run_app.py	/^    def set_end_date(self, end_date):$/;"	m	class:Memory
+set_memory_name	run_app.py	/^    def set_memory_name(self, memory_name):$/;"	m	class:Memory
+set_path_to_gallery	run_app.py	/^    def set_path_to_gallery(self, path):$/;"	m	class:Memory
+set_path_to_preview_img	run_app.py	/^    def set_path_to_preview_img(self, path):$/;"	m	class:Memory
+set_start_date	run_app.py	/^    def set_start_date(self, start_date):$/;"	m	class:Memory
+url	setup.py	/^    url='',$/;"	v
+version	setup.py	/^    version='0.1-1',$/;"	v
