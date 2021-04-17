@@ -1,4 +1,8 @@
-setuptools~=56.0.0
-ujson~=4.0.2
-markdown~=3.3.4
-mysql~=0.0.2
+setuptools
+Markdown==3.3.4
+memoriesarchive==0.1
+mysql==0.0.2
+mysql-connector-python==8.0.23
+mysqlclient==2.0.3
+ujson==4.0.2
+configparser

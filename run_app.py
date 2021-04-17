@@ -1,4 +1,6 @@
+# https://pypi.org/project/ujson/
 import ujson
+import mysql
 import mysql.connector
 from mysql.connector import errorcode
 import argparse
@@ -6,6 +8,7 @@ import datetime
 import os
 import pathlib
 import markdown
+import configparser
 
 
 def parse_args():
@@ -17,7 +20,7 @@ def parse_args():
     # .. TODO You want a date object, not a datetime object
     parser.add_argument("-t", "--tag", help="mark your memory with tag(s)", type=str)
     parser.add_argument("-m", "--memory", help="describe your memory", type=str)
-
+    parser.add_argument("-c", "--config", help="path to config file", type=str, default="config.ini")
     args = parser.parse_args()
     print(args.memory)
 
@@ -26,6 +29,7 @@ class ProgramSettings:
     """
     TODO
     """
+
     def __init__(self):
         pass
 
@@ -34,6 +38,7 @@ class Memory:
     """
     TODO
     """
+
     def __init__(self):
         self.memory_name = None  # short name of event
         self.description = None  # formatted text (bolt text, odstavce, ...)
@@ -127,12 +132,48 @@ def convert_json_to_memory(json_memory):
 
 
 if __name__ == "__main__":
+
+    ## config file loading experiment
+    def read_ini(file_path):
+        config = configparser.ConfigParser()
+        config.read(file_path)
+        for section in config.sections():
+            print(section)
+            for key in config[section]:
+                print((key, config[section][key]))
+
+
+    read_ini("config.ini")
+
+
+    ########
+
+    def read_ini_extra(file_path, dict_obj=None):
+        config = configparser.ConfigParser()
+        if dict_obj:
+            config.read_dict(dict_obj)
+        else:
+            config.read(file_path)
+        debug = config["APP"].getboolean("DEBUG")
+        print(type(debug))
+        # <class 'bool'>
+        name = config.get('APP', 'NAME', fallback='NAME is not defined')
+        print(name)
+        return debug
+
+
+    read_ini_extra("config.ini")
+
+
+    ## TODO: save scheme, load scheme.
     config = {
         'user': 'valgrut',
-        'password': 'password',
+        'password': 'admin',
         'host': '127.0.0.1',
-        'database': 'MemoriesArchive',
-        'raise_on_warnings': True
+        'database': 'memoriesarchive',
+        'raise_on_warnings': True,
+        'port': 3306,
+        'auth_plugin': 'mysql_native_password'
     }
     memories_db = ""
     try:
@@ -152,7 +193,8 @@ if __name__ == "__main__":
         # TEST
         memory1 = Memory()
         memory1.set_memory_name("Prehrada v Krumsine")
-        memory1.set_description("V Krumsine jsme s Davou u sudu u slepic vyhloubili malou prehradu a privod. \n Do nej jsme zahranovali cestu vode pomoci bridlicovych desticek a zkouseli, jestli nase opatreni vydrzi naval vody, ktery jsme vzdy lili z toho sudu.")
+        memory1.set_description(
+            "V Krumsine jsme s Davou u sudu u slepic vyhloubili malou prehradu a privod. \n Do nej jsme zahranovali cestu vode pomoci bridlicovych desticek a zkouseli, jestli nase opatreni vydrzi naval vody, ktery jsme vzdy lili z toho sudu.")
         memory1.add_tag("krumsin")
         memory1.add_tag("david")
         memory1.add_tag("hrani")
