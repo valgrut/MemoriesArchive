@@ -1,6 +1,8 @@
 https://pypi.org/project/markdown-strings/
 https://pypi.org/project/Markdown/
 
+https://docs.python-guide.org/writing/structure/
+
 https://github.com/ReactTraining/react-router
 
 https://www.codespeedy.com/convert-json-to-csv-in-python/
